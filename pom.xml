@@ -157,7 +157,7 @@
 	 <dependency>
 	  <groupId>org.apache.wicket</groupId>
 	  <artifactId>wicket-auth-roles</artifactId>
-	  <version>1.4.16</version>
+	  <version>1.4.17</version>
 	  <type>jar</type>
 	  <exclusions>
 	   <exclusion>
@@ -169,7 +169,7 @@
 	 <dependency>
 	  <groupId>org.apache.wicket</groupId>
 	  <artifactId>wicket-extensions</artifactId>
-	  <version>1.4.16</version>
+	  <version>1.4.17</version>
 	  <type>jar</type>
 	  <exclusions>
 	   <exclusion>
@@ -187,17 +187,6 @@
 	  <groupId>org.apache.cayenne</groupId>
 	  <artifactId>cayenne</artifactId>
 	  <version>2.0.4</version>
-	 </dependency>
-	 <dependency>
-	  <groupId>jasperreports</groupId>
-	  <artifactId>jasperreports</artifactId>
-	  <version>4.0.1</version>
-	  <exclusions>
-	   <exclusion>
-	    <artifactId>commons-collections</artifactId>
-	    <groupId>commons-collections</groupId>
-	   </exclusion>
-	  </exclusions>
 	 </dependency>
 	 <dependency>
 	  <groupId>commons-digester</groupId>
@@ -255,6 +244,27 @@
 	  <groupId>org.slf4j</groupId>
 	  <artifactId>slf4j-nop</artifactId>
 	  <version>1.6.1</version>
+	 </dependency>
+	 <dependency>
+	  <groupId>commons-beanutils</groupId>
+	  <artifactId>commons-beanutils</artifactId>
+	  <version>1.8.3</version>
+	 </dependency>
+	 <dependency>
+	  <groupId>commons-logging</groupId>
+	  <artifactId>commons-logging</artifactId>
+	  <version>1.1.1</version>
+	 </dependency>
+	 <dependency>
+	  <groupId>jasperreports</groupId>
+	  <artifactId>jasperreports</artifactId>
+	  <version>4.0.1</version>
+	  <exclusions>
+	   <exclusion>
+	    <artifactId>commons-collections</artifactId>
+	    <groupId>commons-collections</groupId>
+	   </exclusion>
+	  </exclusions>
 	 </dependency>
 	</dependencies>
 

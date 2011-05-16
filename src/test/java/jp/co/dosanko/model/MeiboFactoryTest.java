@@ -10,6 +10,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -51,9 +52,9 @@ public class MeiboFactoryTest {
         List expResult = null;
         List result = MeiboFactory.getBeanCollection();
    
-
-        //JasperFillManager.fillReportToFile("/home/igahito/NetBeansProjects/meibo/meibo.jasper", null, new JRBeanCollectionDataSource(result));
         JasperPrint pdf = JasperFillManager.fillReport("/home/igahito/NetBeansProjects/meibo/src/main/webapp/reports/meibo.jasper", null, new JRBeanCollectionDataSource(result));
         JasperExportManager.exportReportToPdfFile(pdf,"/home/igahito/test.pdf");
+    
+        
     }
 }

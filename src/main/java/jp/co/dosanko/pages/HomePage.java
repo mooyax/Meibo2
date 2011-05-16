@@ -1,18 +1,13 @@
 package jp.co.dosanko.pages;
 
 
-import java.lang.String;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import jp.co.dosanko.model.Meibo;
-import jp.co.dosanko.model.MeiboProvider;
-import jp.co.dosanko.model.SearchSession;
 import jp.co.dosanko.panels.ResultPanel;
 import jp.co.dosanko.panels.SearchInfoPanel;
 import jp.co.dosanko.panels.SearchPanel;
 import org.apache.wicket.PageParameters;
-import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 

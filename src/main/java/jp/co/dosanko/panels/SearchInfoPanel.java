@@ -5,21 +5,23 @@
 
 package jp.co.dosanko.panels;
 
+
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
+
 
 import jp.co.dosanko.csvutils.MeiboCSVReadWriter;
 import jp.co.dosanko.jasper.JasperReportsResource;
 
 import jp.co.dosanko.model.Meibo;
-import jp.co.dosanko.model.MeiboProvider;
 import jp.co.dosanko.model.SearchSession;
 import net.databinder.models.cay.CayenneProvider;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
 import org.apache.wicket.RequestCycle;
 import org.apache.wicket.Response;
 
@@ -30,7 +32,6 @@ import org.apache.wicket.markup.html.link.ResourceLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
@@ -42,6 +43,7 @@ import org.apache.wicket.request.target.resource.ResourceStreamRequestTarget;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.IStringResourceStream;
 import org.apache.wicket.util.resource.StringBufferResourceStream;
+
 
 
 
@@ -148,7 +150,7 @@ public class SearchInfoPanel extends Panel {
     
             }
         });
-        
+       
         add(new ResourceLink("exportPDF", new JasperReportsResource(){
 
             @Override
@@ -167,6 +169,13 @@ public class SearchInfoPanel extends Panel {
             }
             
         }.setFileName("meibo")));
+  
+        
+
+        
+     
+        
+      
         
     }
 
