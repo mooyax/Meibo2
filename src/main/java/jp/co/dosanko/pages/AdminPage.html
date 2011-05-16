@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" >
+    <head>
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-store" />
+        <meta http-equiv="Cache-Control" content="no-cache" />
+        <meta http-equiv="Expires" content="-1" />    
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta name="robots" rel="noindex" content="noindex"  />
+        <title>北海道教育大学｜大学職員名簿検索システム</title>
+        <link rel="stylesheet" type="text/css" href="./style.css" media="screen,print" />
+        <link rel="stylesheet" type="text/css" href="./common/css/import.css" media="screen,print" />
+
+    </head>
+    <body>
+        <div id="container">
+            <!--HEADER-->
+            <div class="header"><img src="./common/images/logoopr.gif" border="0" alt="大学職員名簿検索システム" title="大学職員名簿検索システム" /></div>
+            <!--HEADER-->
+            <!--メインメニュー-->
+            <div class="mainajast">
+                <div align="center">
+                    <div class="mgn20">
+                        <div wicket:id="feedback"></div>
+                        <table width="880px">
+                            <tr>
+                                <td><img src="./common/images/spacer.gif" width="500px" height="1px" /></td>
+                                <td><img src="./common/images/spacer.gif" width="380px" height="1px" /></td>
+                            </tr>
+                            <tr>
+                                <td class="table-m font-s bold blue"><span wicket:id="campus">札幌校</span>管理者</td>
+                                <td class="table-m right"><a wicket:id="link" href="SignOutPage.html" class="btnTYPE-D" >ログアウト</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div wicket:id="updownPanel" />
+                    <wicket:enclosure child="resultPanel">
+                        <div wicket:id="resultPanel" />
+                        <div class="mgn30"><form wicket:id="adminForm" action="."><input wicket:id="back" type="submit" value="アップロード画面に戻る" class="btnTYPE-D" />　　<input wicket:id="write" type="submit" value="以下の職員名簿情報を反映する" class="btnTYPE-B" /></form></div>
+                    </wicket:enclosure>
+                </div>
+            </div>
+            <!--メインメニュー-->
+
+            <!--FOOTER-->
+            <div class="footer-copy font-ss gray">Copyright（C）北海道教育大学 All Rights reserved.</div>
+            <!--FOOTER-->
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+  project-version="3.0.0.1">
+	<property name="defaultPackage" value="jp.co.dosanko.model"/>
+	<db-entity name="MEIBO" schema="APP">
+		<db-attribute name="BGROUP" type="VARCHAR" length="30"/>
+		<db-attribute name="BUKOUSHITSU" type="VARCHAR" length="30"/>
+		<db-attribute name="BUNRUI" type="VARCHAR" length="2"/>
+		<db-attribute name="BUNYA" type="VARCHAR" length="30"/>
+		<db-attribute name="CAMPUS" type="VARCHAR" length="20"/>
+		<db-attribute name="FAX" type="VARCHAR" length="30"/>
+		<db-attribute name="HNAME" type="VARCHAR" length="50"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="JUNJYO" type="VARCHAR" length="10"/>
+		<db-attribute name="KAMOKU" type="VARCHAR" length="30"/>
+		<db-attribute name="KYOKU" type="VARCHAR" length="30"/>
+		<db-attribute name="KYOUIKUKOUZA" type="VARCHAR" length="30"/>
+		<db-attribute name="MAIL" type="VARCHAR" length="100"/>
+		<db-attribute name="NAME" type="VARCHAR" length="50"/>
+		<db-attribute name="SENKOU" type="VARCHAR" length="20"/>
+		<db-attribute name="SYOZOKUKA" type="VARCHAR" length="30"/>
+		<db-attribute name="TEL1" type="VARCHAR" length="30"/>
+		<db-attribute name="TEL2" type="VARCHAR" length="30"/>
+		<db-attribute name="YAKUSHOKU" type="VARCHAR" length="30"/>
+	</db-entity>
+	<db-entity name="USERROLES" schema="APP">
+		<db-attribute name="DISPLAY" type="VARCHAR" length="20"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="NAME" type="VARCHAR" length="20"/>
+		<db-attribute name="PASSWORD" type="VARCHAR" length="20"/>
+		<db-attribute name="ROLE" type="VARCHAR" length="20"/>
+	</db-entity>
+	<obj-entity name="Meibo" className="jp.co.dosanko.model.Meibo" dbEntityName="MEIBO">
+		<obj-attribute name="bgroup" type="java.lang.String" db-attribute-path="BGROUP"/>
+		<obj-attribute name="bukoushitsu" type="java.lang.String" db-attribute-path="BUKOUSHITSU"/>
+		<obj-attribute name="bunrui" type="java.lang.String" db-attribute-path="BUNRUI"/>
+		<obj-attribute name="bunya" type="java.lang.String" db-attribute-path="BUNYA"/>
+		<obj-attribute name="campus" type="java.lang.String" db-attribute-path="CAMPUS"/>
+		<obj-attribute name="fax" type="java.lang.String" db-attribute-path="FAX"/>
+		<obj-attribute name="hname" type="java.lang.String" db-attribute-path="HNAME"/>
+		<obj-attribute name="kamoku" type="java.lang.String" db-attribute-path="KAMOKU"/>
+		<obj-attribute name="kyoku" type="java.lang.String" db-attribute-path="KYOKU"/>
+		<obj-attribute name="kyouikukouza" type="java.lang.String" db-attribute-path="KYOUIKUKOUZA"/>
+		<obj-attribute name="mail" type="java.lang.String" db-attribute-path="MAIL"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+		<obj-attribute name="junjyo" type="java.lang.String" db-attribute-path="JUNJYO"/>
+		<obj-attribute name="senkou" type="java.lang.String" db-attribute-path="SENKOU"/>
+		<obj-attribute name="syozokuka" type="java.lang.String" db-attribute-path="SYOZOKUKA"/>
+		<obj-attribute name="tel1" type="java.lang.String" db-attribute-path="TEL1"/>
+		<obj-attribute name="tel2" type="java.lang.String" db-attribute-path="TEL2"/>
+		<obj-attribute name="yakushoku" type="java.lang.String" db-attribute-path="YAKUSHOKU"/>
+	</obj-entity>
+	<obj-entity name="UserRoles" className="jp.co.dosanko.model.UserRoles" dbEntityName="USERROLES">
+		<obj-attribute name="display" type="java.lang.String" db-attribute-path="DISPLAY"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+		<obj-attribute name="password" type="java.lang.String" db-attribute-path="PASSWORD"/>
+		<obj-attribute name="role" type="java.lang.String" db-attribute-path="ROLE"/>
+	</obj-entity>
+</data-map>

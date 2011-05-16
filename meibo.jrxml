@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="meibo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Rows">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2==0]]></conditionExpression>
+			<style backcolor="#D3D3D3"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Table Dataset 1">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="bgroup" class="java.lang.String">
+			<fieldDescription><![CDATA[bgroup]]></fieldDescription>
+		</field>
+		<field name="bukoushitsu" class="java.lang.String">
+			<fieldDescription><![CDATA[bukoushitsu]]></fieldDescription>
+		</field>
+		<field name="bunya" class="java.lang.String">
+			<fieldDescription><![CDATA[bunya]]></fieldDescription>
+		</field>
+		<field name="campus" class="java.lang.String">
+			<fieldDescription><![CDATA[campus]]></fieldDescription>
+		</field>
+		<field name="fax" class="java.lang.String">
+			<fieldDescription><![CDATA[fax]]></fieldDescription>
+		</field>
+		<field name="hname" class="java.lang.String">
+			<fieldDescription><![CDATA[hname]]></fieldDescription>
+		</field>
+		<field name="kamoku" class="java.lang.String">
+			<fieldDescription><![CDATA[kamoku]]></fieldDescription>
+		</field>
+		<field name="kyoku" class="java.lang.String">
+			<fieldDescription><![CDATA[kyoku]]></fieldDescription>
+		</field>
+		<field name="kyouikukouza" class="java.lang.String">
+			<fieldDescription><![CDATA[kyouikukouza]]></fieldDescription>
+		</field>
+		<field name="mail" class="java.lang.String">
+			<fieldDescription><![CDATA[mail]]></fieldDescription>
+		</field>
+		<field name="name" class="java.lang.String">
+			<fieldDescription><![CDATA[name]]></fieldDescription>
+		</field>
+		<field name="senkou" class="java.lang.String">
+			<fieldDescription><![CDATA[senkou]]></fieldDescription>
+		</field>
+		<field name="syozokuka" class="java.lang.String">
+			<fieldDescription><![CDATA[syozokuka]]></fieldDescription>
+		</field>
+		<field name="tel1" class="java.lang.String">
+			<fieldDescription><![CDATA[tel1]]></fieldDescription>
+		</field>
+		<field name="tel2" class="java.lang.String">
+			<fieldDescription><![CDATA[tel2]]></fieldDescription>
+		</field>
+		<field name="yakushoku" class="java.lang.String">
+			<fieldDescription><![CDATA[yakushoku]]></fieldDescription>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="bgroup" class="java.lang.String">
+		<fieldDescription><![CDATA[bgroup]]></fieldDescription>
+	</field>
+	<field name="bukoushitsu" class="java.lang.String">
+		<fieldDescription><![CDATA[bukoushitsu]]></fieldDescription>
+	</field>
+	<field name="bunya" class="java.lang.String">
+		<fieldDescription><![CDATA[bunya]]></fieldDescription>
+	</field>
+	<field name="campus" class="java.lang.String">
+		<fieldDescription><![CDATA[campus]]></fieldDescription>
+	</field>
+	<field name="fax" class="java.lang.String">
+		<fieldDescription><![CDATA[fax]]></fieldDescription>
+	</field>
+	<field name="hname" class="java.lang.String">
+		<fieldDescription><![CDATA[hname]]></fieldDescription>
+	</field>
+	<field name="kamoku" class="java.lang.String">
+		<fieldDescription><![CDATA[kamoku]]></fieldDescription>
+	</field>
+	<field name="kyoku" class="java.lang.String">
+		<fieldDescription><![CDATA[kyoku]]></fieldDescription>
+	</field>
+	<field name="kyouikukouza" class="java.lang.String">
+		<fieldDescription><![CDATA[kyouikukouza]]></fieldDescription>
+	</field>
+	<field name="mail" class="java.lang.String">
+		<fieldDescription><![CDATA[mail]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="senkou" class="java.lang.String">
+		<fieldDescription><![CDATA[senkou]]></fieldDescription>
+	</field>
+	<field name="syozokuka" class="java.lang.String">
+		<fieldDescription><![CDATA[syozokuka]]></fieldDescription>
+	</field>
+	<field name="tel1" class="java.lang.String">
+		<fieldDescription><![CDATA[tel1]]></fieldDescription>
+	</field>
+	<field name="tel2" class="java.lang.String">
+		<fieldDescription><![CDATA[tel2]]></fieldDescription>
+	</field>
+	<field name="yakushoku" class="java.lang.String">
+		<fieldDescription><![CDATA[yakushoku]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="331" y="23" width="224" height="36"/>
+				<textElement>
+					<font fontName="Serif" size="12" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[国立大学法人　北海道教育大学　職員録]]></text>
+			</staticText>
+			<image>
+				<reportElement x="5" y="3" width="136" height="56"/>
+				<imageExpression class="java.lang.String"><![CDATA["../common/images/symbol-hue.gif"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="93" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="364" y="63" width="78" height="26" backcolor="#A0A0A0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[FAX番号]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="182" y="63" width="79" height="26" backcolor="#A0A0A0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[電話番号]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="45" width="79" height="18" backcolor="#A0A0A0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[メールアドレス]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="63" width="79" height="26" backcolor="#A0A0A0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[ダイヤルイン]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement style="Rows" mode="Transparent" x="0" y="63" width="554" height="26"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="554" height="45"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="45" width="554" height="18"/>
+			</rectangle>
+			<line>
+				<reportElement x="363" y="63" width="1" height="27"/>
+			</line>
+			<line>
+				<reportElement x="442" y="63" width="1" height="27"/>
+			</line>
+			<line>
+				<reportElement x="261" y="63" width="1" height="27"/>
+			</line>
+			<line>
+				<reportElement x="181" y="63" width="1" height="27"/>
+			</line>
+			<line>
+				<reportElement x="79" y="45" width="1" height="44"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="7" y="26" width="547" height="18">
+					<printWhenExpression><![CDATA[$F{name}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}+" ("+$F{hname}+")"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="80" y="63" width="101" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tel1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="262" y="64" width="102" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tel2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="443" y="64" width="111" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fax}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="84" y="45" width="470" height="18"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{mail}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="8" y="0" width="195" height="14"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font isStrikeThrough="false" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["["+$F{campus}+"]"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="8" y="14" width="355" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{yakushoku}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="89" width="554" height="4"/>
+			</rectangle>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="431" y="25" width="54" height="20"/>
+				<textElement textAlignment="Right">
+					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="485" y="25" width="70" height="20"/>
+				<textElement>
+					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{PAGE_NUMBER}+"ページ"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="331" y="5" width="224" height="20"/>
+				<textElement>
+					<font size="12" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[国立大学法人　北海道教育大学　職員録]]></text>
+			</staticText>
+			<image>
+				<reportElement x="5" y="8" width="166" height="20"/>
+				<imageExpression class="java.lang.String"><![CDATA["../common/images/hue.gif"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>

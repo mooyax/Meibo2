@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<driver project-version="3.0.0.1" class="org.apache.derby.jdbc.ClientDriver">
+	<url value="jdbc:derby://localhost:1527/meibo;create=true"/>
+	<connectionPool min="10" max="20"/>
+	<login userName="meibo" password="igahito"/>
+</driver>

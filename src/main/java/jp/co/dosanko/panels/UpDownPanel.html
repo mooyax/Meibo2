@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:wicket>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>UpDownPanel</title>
+    </head>
+    <body>
+        <wicket:panel>
+
+			<div class="mgn10 font-ss">職員名簿を修正する場合は、【A】をダウンロードし修正の後、【B】にアップロードください。</div>
+                       
+			<div class="mgn30">
+                            
+				<table width="880px">
+					<tr>
+						<td><img src="./common/images/spacer.gif" width="330px" height="1px"/></td>
+						<td><img src="./common/images/spacer.gif" width="550px" height="1px"/></td>
+					</tr>
+					<tr>
+						<td class="table-l box font-m title-02">【A】職員名簿を<span class="bold green">ダウンロード</span>します</td>
+                                                <td class="table-l box font-s center"><form wicket:id="downloadform"><div><a href="#" wicket:id="download">職員名簿（CSVファイル）</a></div></form></td>
+					</tr>
+					<tr>
+						<td class="table-l box font-m title-02">【B】職員名簿を<span class="bold green">アップロード</span>します</td>
+						<td class="table-l box center">
+                                                    <form wicket:id="ajax-simpleUpload" action="."><p>
+                                                    <input wicket:id="fileInput" type="file"/>
+                                                    <span wicket:id="progress">[[ajax upload progressbar]]</span></p><p><br />
+                                                    <input type="submit" value="職員名簿アップロードして確認する" class="btnTYPE-B" />  </p>                      </form>
+                                                </td>
+					</tr>
+				</table>
+
+			</div>
+
+
+
+        </wicket:panel>
+    </body>
+</html>

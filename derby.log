@@ -1,0 +1,9 @@
+----------------------------------------------------------------
+2011-04-01 04:39:46.002 GMT:
+ Derby バージョン The Apache Software Foundation - Apache Derby - 10.6.2.1 - (999685): インスタンス a816c00e-012f-0f5c-1df9-000004c41fc8 を
+クラスローダー org.apache.cayenne.modeler.FileClassLoadingService$FileClassLoader@3dc13d によってデータベースディレクトリ /home/igahito/NetBeansProjects/meibo/meibo2  上でブート中 
+
+
+java.vendor=Sun Microsystems Inc.
+java.runtime.version=1.6.0_20-b20
+データベースクラスローダーが開始されました - derby.database.classpath=''

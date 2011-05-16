@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:wicket>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>SearchInfoPanel</title>
+    </head>
+    <body>
+        <wicket:panel>
+            <div class="mgn20">
+                <table width="880px">
+                    <tr>
+                        <td><img src="./common/images/spacer.gif" width="880px" height="1px" /></td>
+                    </tr>
+                    <tr>
+                        <td class="box table-m font-ss">
+                            <p><span class="green">【フリーワード】</span><span wicket:id="freeword">やまだ</span><span wicket:id="searchinfo"><span class="green">【<span wicket:id="fieldName">フリーワード</span>】</span><span wicket:id="value">やまだ</span></span></p>
+                            <div align="right">での検索結果は下記の通りです。（<span wicket:id="total">-999</span>件）</div>
+                            <div align="right"><form wicket:id="downloadform"><div><a href="#" wicket:id="download">ダウンロード（CSVファイル）</a></div></form><a href="" wicket:id="exportPDF">PDF出力</a></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </wicket:panel>
+    </body>
+</html>

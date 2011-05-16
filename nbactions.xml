@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-cayenne</actionName>
+            <displayName>cayenne</displayName>
+            <goals>
+                <goal>cayenne-modeler:run</goal>
+            </goals>
+        </action>
+    </actions>

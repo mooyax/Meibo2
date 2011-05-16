@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" />
+<html xmlns:wicket>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>SearchPanel</title>
+    </head>
+    <body>
+        <wicket:panel>
+            <div class="mgn10"><img src="./common/images/title.gif" border=0 alt="検索条件をご入力ください。" title="検索条件をご入力ください。" /></div>
+            <form wicket:id="searchForm" method="post">
+                <div class="mgn30"><input type="submit" wicket:id="fsearch" value="検索" class="btnTYPE-B" style="width:200px;height:30px;cursor:pointer" /></div>
+                <div class="mgn30" >
+
+                    <table width="880px" >
+                        <tr>
+                            <td><img src="./common/images/spacer.gif" width="140px" height="1px" /></td>
+                            <td><img src="./common/images/spacer.gif" width="740px" height="1px" /></td>
+                        </tr>
+                        <tr>
+                            <td class="box table-m top title-01 font-s center white" >フリーワード</td>
+                            <td class="box table-m top title-02 font-s" ><input wicket:id="freeword" type="text" name="uid" value="" size="60" maxlength="300" /></td>
+                        </tr>
+                        <tr wicket:id="itemlist"><wicket:container wicket:id="group">
+                            <td class="box table-m top title-03 font-s center white" ><span wicket:id="title">キャンパス</span><br /><input  type="checkbox" wicket:id="groupselector">選択/解除</input></td>
+                            <td class="box table-m top title-04 font-s">
+                                <span wicket:id="list"><input type="checkbox" wicket:id="check" /><span wicket:id="value">札幌校</span></span>
+                            </td>
+                            </wicket:container>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="mgn5 font-ss">下記検索ボタンを押してください。</div>
+                <div class="mgn30"><input type="submit" wicket:id="search" value="検索" class="btnTYPE-B" style="width:200px;height:30px;cursor:pointer" /></div>
+            </form>
+        </wicket:panel>
+    </body>
+</html>

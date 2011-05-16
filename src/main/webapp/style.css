@@ -1,0 +1,25 @@
+/* 
+    Document   : style.css
+    Created on : 2011/03/29, 16:06:13
+    Author     : igahito
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+li.feedbackPanelERROR { 
+    color: red;
+    margin-left:0px;
+    list-style-type: none;
+}
+li.feedbackPanelINFO {
+    color: blue;
+    margin-left:0px;
+    list-style-type: none;    
+}
+span.invalidField { color: red }
+
+
