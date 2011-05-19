@@ -112,7 +112,8 @@ public final class UpDownPanel extends Panel {
 
                 try {
                     CayenneProvider provider = (CayenneProvider) SearchSession.get().getDataProvider();
-                    SelectQuery query=SearchSession.get().getQuery();
+                    //SelectQuery query=SearchSession.get().getQuery();
+                    SelectQuery query=new SelectQuery(Meibo.class);
                     query.addOrdering("junjyo",true);
                     SearchSession.get().setQuery(query);
                     reader.write(provider.getList(), resource);

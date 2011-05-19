@@ -43,7 +43,6 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.model.util.ListModel;
 
 /**
@@ -101,8 +100,8 @@ public final class SearchPanel extends Panel {
                 Expression exp = null;
 
 
-                //query = new SelectQuery(Meibo.class);
-                SelectQuery query = SearchSession.get().getQuery();
+                SelectQuery query = new SelectQuery(Meibo.class);
+                //SelectQuery query = SearchSession.get().getQuery();
                 query.setQualifier(null);
                 query.addOrdering("bunrui", true);
                 query.addOrdering("junjyo", true);
@@ -148,12 +147,18 @@ public final class SearchPanel extends Panel {
                     Component anchor = this.getPage().get("resultPanel:anchor");
                     info.setVisible(true);
                     target.addComponent(info);
-                    if (SearchSession.get().isFirst) {
+                    
+                    if (!result.isVisible()) {
                         result.setVisible(true);
                         target.addComponent(result);
-                        //    SearchSession.get().isFirst=false;
+                        //SearchSession.get().isFirst=false;
+                        
+                        
                     }
-
+                    //System.out.println(getPage().get("resultPanel:context:gridtable").getMarkupId());
+                    target.appendJavascript("var childs=$(\"#"+getPage().get("resultPanel:context:gridtable").getMarkupId()+"\").children();"
+        //+"alert(\"子のIDは「\"+childs[0].id+\"」です\");");
+        + "jQuery(\"#\"+childs[0].id.substring(5,10)).setGridParam({page:1,sortname:'bunrui',sortorder: 'asc'}).trigger(\"reloadGrid\");");
                     target.addComponent(this);
                     //target.focusComponent(null);
 

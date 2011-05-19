@@ -18,16 +18,5 @@ public final class MyExpiredErrorPage extends PageExpiredErrorPage {
     private static final long serialVersionUID =1L;
     
     public MyExpiredErrorPage(PageParameters params) {
-        Link link=new Link("link") {
-
-            @Override
-            public void onClick() {
-                getSession().invalidate();
-		getRequestCycle().setRedirect(true);
-		setResponsePage(HomePage.class);
-            }
-        };
-        
-        add(link);
     }
 }

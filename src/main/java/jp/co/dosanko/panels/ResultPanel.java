@@ -4,32 +4,30 @@
  */
 
 package jp.co.dosanko.panels;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.odlabs.wiquery.core.events.Event;
+
+
+import com.wiquery.plugins.jqgrid.component.event.OnHeaderClickAjaxEvent.GridState;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import com.wiquery.plugins.jqgrid.component.Grid;
+import com.wiquery.plugins.jqgrid.component.event.OnHeaderClickAjaxEvent;
 import com.wiquery.plugins.jqgrid.component.event.OnPagingAjaxEvent;
+import com.wiquery.plugins.jqgrid.component.event.OnResizeStopAjaxEvent;
+import com.wiquery.plugins.jqgrid.component.event.OnRightClickRowAjaxEvent;
+import com.wiquery.plugins.jqgrid.component.event.OnSelectRowAjaxEvent;
 import com.wiquery.plugins.jqgrid.component.event.OnSortColAjaxEvent;
 import com.wiquery.plugins.jqgrid.model.GridColumnModel;
 import com.wiquery.plugins.jqgrid.model.GridModel;
 import com.wiquery.plugins.jqgrid.model.GridModel.HorizontalPosition;
 import com.wiquery.plugins.jqgrid.model.IColumn;
 import com.wiquery.plugins.jqgrid.model.SortOrder;
-import java.util.List;
-import java.util.Map;
 import jp.co.dosanko.model.Meibo;
-import jp.co.dosanko.model.MeiboProvider;
 import jp.co.dosanko.model.SearchSession;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.extensions.markup.html.repeater.util.SingleSortState;
+import org.apache.wicket.ajax.markup.html.AjaxFallbackLink;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
-import org.apache.wicket.model.Model;
-import org.odlabs.wiquery.core.events.MouseEvent;
-import static org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortState.*;
 import org.apache.wicket.model.IModel;
-import org.odlabs.wiquery.core.events.WiQueryEventBehavior;
+import org.apache.wicket.model.Model;
 import org.odlabs.wiquery.core.javascript.JsScope;
 
 /**
@@ -42,6 +40,7 @@ public final class ResultPanel extends Panel {
 
     WebMarkupContainer context;
     WebMarkupContainer anchor;
+    GridModel<Meibo> model;
 
     @Override
     protected void onDetach() {
@@ -51,24 +50,34 @@ public final class ResultPanel extends Panel {
     }
 
     public JsScope reloadGrid(){
+        
         return JsScope.quickScope("jQuery(\"#"+ResultPanel.this.get("context:gridtable:grid").getMarkupId()+"\").setGridParam({page:1,sortname:'bunrui',sortorder: 'asc'}).trigger(\"reloadGrid\");");
+       
     }
     
     
     public ResultPanel(String id,IDataProvider<Meibo> provider,boolean isSortable){
         super(id);
         
-
+        if(provider==null){
+            provider=SearchSession.get().getDataProvider();
+        }
+        
+/*
         anchor=new WebMarkupContainer("anchor");
+        
         anchor.add(new WiQueryEventBehavior(new Event(MouseEvent.CLICK) {
 
             @Override
             public JsScope callback() {
+                System.out.println("reloadGrid");
                 //return JsScope.quickScope("jQuery(\"#"+ResultPanel.this.get("context:gridtable:grid").getMarkupId()+"\").setGridParam({page:1,sortname:'bunrui',sortorder: 'asc'}).trigger(\"reloadGrid\");");
                 return ResultPanel.this.reloadGrid();
             }
         }));   
         
+        
+      
 
             
 
@@ -84,17 +93,25 @@ public final class ResultPanel extends Panel {
         }
         add(anchor);
         
-        
+    */
+        anchor = new AjaxFallbackLink("anchor"){
+
+            @Override
+            public void onClick(AjaxRequestTarget target) {
+                model.setSortOrder(SortOrder.asc);
+                target.appendJavascript("jQuery(\"#"+ResultPanel.this.get("context:gridtable:grid").getMarkupId()+"\").setGridParam({page:1,sortname:'bunrui',sortorder: 'asc'}).trigger(\"reloadGrid\");");
+            }
+         
+        };
+        add(anchor);
         
         //SelectQuery query=SearchSession.get().getQuery();
 
-        if(provider==null){
-            provider=SearchSession.get().getDataProvider();
-        }
+
         
         
 
-        GridModel<Meibo> model=new GridModel(Meibo.class){
+        model=new GridModel(Meibo.class){
 
             @Override
             public IColumn getInitialSort() {
@@ -140,6 +157,9 @@ public final class ResultPanel extends Panel {
 
         model.setSortOrder(SortOrder.asc);
         
+        
+        
+        
         context = new WebMarkupContainer("context");
         context.setOutputMarkupId(true);
         add(context);
@@ -147,34 +167,21 @@ public final class ResultPanel extends Panel {
 
         Grid<Meibo> grid = new Grid<Meibo>("gridtable", model, provider);
  
-        
- /*       grid.addEvent(new OnSortColAjaxEvent<Meibo>(){
+
+          
+        grid.addEvent(new OnSortColAjaxEvent<Meibo>(){
 
             @Override
             protected void onSortCol(AjaxRequestTarget target, Grid<Meibo> grid, IColumn<Meibo> column, int col, String sortProperty, SortOrder order) {
-  
-
-                
-               
-                MeiboProvider provider=((MeiboProvider)SearchSession.get().getDataProvider());
-
-                SingleSortState sortState=new SingleSortState();
-                sortState.setPropertySortOrder(column.getPropertyPath(), order.equals(SortOrder.asc)?ASCENDING:DESCENDING);
-                provider.setSortState(sortState);
-                provider.setQuery(provider.getQuery());
-                System.out.println("onSortCol");
-
-      
+                    //System.out.println("onSortCol was clicked!");
                
             }
 
 
         });
-*/
+
         
- /*       grid.addEvent(new OnPagingAjaxEvent<Meibo>() {
-
-
+        grid.addEvent(new OnPagingAjaxEvent<Meibo>() {
 			@Override
 			protected void onPaging(
 					AjaxRequestTarget target,
@@ -183,9 +190,18 @@ public final class ResultPanel extends Panel {
 				//System.out.println(button.name() + " was clicked!");
 			}
 
-
         });
-*/
+        
+        grid.addEvent(new OnSelectRowAjaxEvent<Meibo>(){
+
+            @Override
+            protected void onSelectRow(AjaxRequestTarget target, int row, IModel<Meibo> rowModel, boolean status) {
+                //System.out.println("onSelectRow");
+            }
+            
+        });
+        
+
 
         context.add(grid);
 

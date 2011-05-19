@@ -88,7 +88,7 @@ public class SearchSession extends AuthenticatedWebSession{
     public SearchSession(Request request) {
         super(request);
 
-        query=new SelectQuery(Meibo.class);
+        query=new SelectQuery();
         
         dataProvider =new MeiboProvider<Meibo>();
         dataProvider.setQuery(query);

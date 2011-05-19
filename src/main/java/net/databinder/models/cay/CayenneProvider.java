@@ -62,7 +62,11 @@ public class CayenneProvider<T> extends PropertyDataProvider<T>{
         }catch(Exception e){
             context=DataContext.createDataContext();
         }
-        return context.performQuery(query);
+        try{
+            return context.performQuery(query);
+        }catch(Exception e){
+            return null;
+        }
     }
 
     @Override

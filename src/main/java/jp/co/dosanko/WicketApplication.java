@@ -20,13 +20,10 @@ import org.apache.wicket.authorization.strategies.role.Roles;
 import org.apache.wicket.protocol.http.WebRequest;
 import org.apache.wicket.request.IRequestCycleProcessor;
 import net.databinder.cay.DataApplication;
-import net.databinder.cay.DataRequestCycle;
 import net.databinder.models.cay.CayenneProvider;
 import org.apache.cayenne.exp.Expression;
 import org.apache.cayenne.query.SelectQuery;
-import org.apache.wicket.Application;
 import org.apache.wicket.Page;
-import org.apache.wicket.PageParameters;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -38,7 +35,6 @@ import org.apache.wicket.authorization.strategies.role.RoleAuthorizationStrategy
 import org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadWebRequest;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.PageExpiredException;
-import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.http.WebRequestCycleProcessor;
 import org.apache.wicket.util.file.Folder;
 import org.apache.wicket.util.time.Duration;
@@ -79,7 +75,7 @@ public final class WicketApplication extends DataApplication implements
 
     @Override
     protected void init() {
-
+        super.init();
         //wiqueryPluginInstantiationListener = new WiQueryInstantiationListener();
 
         //addComponentInstantiationListener((IComponentInstantiationListener) wiqueryPluginInstantiationListener);
@@ -200,7 +196,8 @@ public final class WicketApplication extends DataApplication implements
         roleProvider.setQuery(rolesquery);
         return (UserRoles) roleProvider.iterator(0, 1).next();
     }
-
+    
+/*  
     @Override
     protected IRequestCycleProcessor newRequestCycleProcessor() {
         return new WebRequestCycleProcessor() { 
@@ -210,7 +207,9 @@ public final class WicketApplication extends DataApplication implements
                 if (e instanceof PageExpiredException) { 
                     if(((WebRequest)RequestCycle.get().getRequest()).isAjax()) { 
                         AjaxRequestTarget rt = new AjaxRequestTarget(RequestCycle.get().getRequest().getPage()); 
-                        rt.appendJavascript("if(typeof window.handleAjaxSessionTimeout=='function')window.handleAjaxSessionTimeout()"); 
+                        //rt.appendJavascript("if(typeof window.handleAjaxSessionTimeout=='function')window.handleAjaxSessionTimeout()"); 
+                        rt.appendJavascript("alert('セッションが切れました')");
+                        
                         RequestCycle.get().setRequestTarget(rt); 
                         return; 
                     } 
@@ -220,7 +219,7 @@ public final class WicketApplication extends DataApplication implements
         }; 
     }
 
-    
+  
     @Override
     public RequestCycle newRequestCycle(Request request, Response response) {
         return new CustomRequestCycle(this, (WebRequest) request, response);
@@ -257,4 +256,6 @@ public final class WicketApplication extends DataApplication implements
 
         }
     }
+     * *
+     */
 }
