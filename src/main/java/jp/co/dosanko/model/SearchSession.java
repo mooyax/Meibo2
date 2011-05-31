@@ -35,7 +35,6 @@ public class SearchSession extends AuthenticatedWebSession{
     private UserRoles userRoles;
 //    private String freeword;
     
-    public boolean isFirst=true;
 /*  
     private Map<String, List<String>> checkboxModel = null;
 

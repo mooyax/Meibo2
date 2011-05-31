@@ -13,12 +13,11 @@ import jp.co.dosanko.pages.ErrorPage;
 import jp.co.dosanko.pages.MyExpiredErrorPage;
 import org.apache.wicket.Component;
 import org.apache.wicket.Request;
-import org.apache.wicket.RequestCycle;
+import org.apache.wicket.ResourceReference;
 import org.apache.wicket.Response;
 import org.apache.wicket.Session;
 import org.apache.wicket.authorization.strategies.role.Roles;
 import org.apache.wicket.protocol.http.WebRequest;
-import org.apache.wicket.request.IRequestCycleProcessor;
 import net.databinder.cay.DataApplication;
 import net.databinder.models.cay.CayenneProvider;
 import org.apache.cayenne.exp.Expression;
@@ -26,7 +25,6 @@ import org.apache.cayenne.query.SelectQuery;
 import org.apache.wicket.Page;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.WicketRuntimeException;
-import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authorization.IUnauthorizedComponentInstantiationListener;
 import org.apache.wicket.authorization.UnauthorizedInstantiationException;
@@ -34,10 +32,9 @@ import org.apache.wicket.authorization.strategies.role.IRoleCheckingStrategy;
 import org.apache.wicket.authorization.strategies.role.RoleAuthorizationStrategy;
 import org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadWebRequest;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.protocol.http.PageExpiredException;
-import org.apache.wicket.protocol.http.WebRequestCycleProcessor;
 import org.apache.wicket.util.file.Folder;
 import org.apache.wicket.util.time.Duration;
+import org.odlabs.wiquery.ui.themes.IThemableApplication;
 
 
 
@@ -51,13 +48,24 @@ import org.apache.wicket.util.time.Duration;
  */
 public final class WicketApplication extends DataApplication implements
         IRoleCheckingStrategy,
-        IUnauthorizedComponentInstantiationListener {
+        IUnauthorizedComponentInstantiationListener,
+        IThemableApplication{
 
     //private WiQueryInstantiationListener wiqueryPluginInstantiationListener;
     /** Subclass of authenticated web session to instantiate */
     private final WeakReference<Class<? extends AuthenticatedWebSession>> webSessionClassRef;
     private Folder uploadFolder = null; //一時的
+    private ResourceReference theme;
 
+    private class MyThemeResourceReference extends ResourceReference{
+        private static final long serialVersionUID = 1L;
+                
+        public MyThemeResourceReference(){
+               super(WicketApplication.class, "theme/jquery-ui-1.8.13.custom.css");
+               //super(IThemableApplication.class, "uilightness/jquery-ui-1.8.10.custom.css");
+        }
+    }
+  
     /**
      * Constructor
      */
@@ -65,6 +73,10 @@ public final class WicketApplication extends DataApplication implements
         // Get web session class to instantiate
         webSessionClassRef = new WeakReference<Class<? extends AuthenticatedWebSession>>(
                 getWebSessionClass());
+        
+        theme=new MyThemeResourceReference();
+        
+     
     }
 
     public Folder getUploadFolder() //一時的
@@ -258,4 +270,9 @@ public final class WicketApplication extends DataApplication implements
     }
      * *
      */
+
+    @Override
+    public ResourceReference getTheme(Session session) {
+        return theme;
+    }
 }

@@ -48,9 +48,8 @@ public class HomePageTest {
                 
 	}
         
-        @Ignore
         @Test
-        public void HomePage検索テスト()
+        public void HomePage全検索テスト()
         {
                 
                 FormTester formTester=tester.newFormTester("searchPanel:searchForm", true);
@@ -59,6 +58,21 @@ public class HomePageTest {
                 tester.assertVisible("infoPanel");
                 tester.assertVisible("resultPanel");
                 tester.assertVisible("searchPanel");
+                
+        }
+        
+                @Test
+        public void HomePage札幌検索テスト()
+        {
+                
+                FormTester formTester=tester.newFormTester("searchPanel:searchForm", true);
+                formTester.setValue("itemlist:0:group", "check1"); 
+                tester.executeAjaxEvent("searchPanel:searchForm:fsearch", "onclick");
+                      
+                tester.assertVisible("infoPanel");
+                tester.assertVisible("resultPanel");
+                tester.assertVisible("searchPanel");
+                
                 
         }
 

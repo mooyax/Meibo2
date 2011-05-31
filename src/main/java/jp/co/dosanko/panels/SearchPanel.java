@@ -44,6 +44,10 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.util.ListModel;
+import org.odlabs.wiquery.core.javascript.JsQuery;
+import org.odlabs.wiquery.core.javascript.JsScope;
+import org.odlabs.wiquery.core.javascript.JsStatement;
+import org.odlabs.wiquery.core.javascript.JsUtils;
 
 /**
  *
@@ -155,13 +159,15 @@ public final class SearchPanel extends Panel {
                         
                         
                     }
-                    //System.out.println(getPage().get("resultPanel:context:gridtable").getMarkupId());
-                    target.appendJavascript("var childs=$(\"#"+getPage().get("resultPanel:context:gridtable").getMarkupId()+"\").children();"
-        //+"alert(\"子のIDは「\"+childs[0].id+\"」です\");");
-        + "jQuery(\"#\"+childs[0].id.substring(5,10)).setGridParam({page:1,sortname:'bunrui',sortorder: 'asc'}).trigger(\"reloadGrid\");");
+//                   JavaScriptを記述する例                
+//                    target.appendJavascript("var grid=$(\"#"+getPage().get("resultPanel:context:gridtable").getMarkupId()+" table.tbody:first\");"
+//                            +"grid.setGridParam({page:1,sortname:'bunrui',sortorder: 'asc'}).trigger(\"reloadGrid\");"
+//                            );
+                    target.appendJavascript((String)new JsQuery(getPage().get("resultPanel:context:gridtable")).$("table.tbody:first").chain("setGridParam","{page:1,sortname:'bunrui',sortorder: 'asc'}").chain("trigger",JsUtils.quotes("reloadGrid")).render());
                     target.addComponent(this);
-                    //target.focusComponent(null);
-
+                    
+                    
+                
                     target.focusComponent(anchor);
 
 

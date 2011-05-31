@@ -6,13 +6,9 @@
 package jp.co.dosanko.panels;
 
 
-import com.wiquery.plugins.jqgrid.component.event.OnHeaderClickAjaxEvent.GridState;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import com.wiquery.plugins.jqgrid.component.Grid;
-import com.wiquery.plugins.jqgrid.component.event.OnHeaderClickAjaxEvent;
 import com.wiquery.plugins.jqgrid.component.event.OnPagingAjaxEvent;
-import com.wiquery.plugins.jqgrid.component.event.OnResizeStopAjaxEvent;
-import com.wiquery.plugins.jqgrid.component.event.OnRightClickRowAjaxEvent;
 import com.wiquery.plugins.jqgrid.component.event.OnSelectRowAjaxEvent;
 import com.wiquery.plugins.jqgrid.component.event.OnSortColAjaxEvent;
 import com.wiquery.plugins.jqgrid.model.GridColumnModel;
@@ -28,7 +24,10 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.odlabs.wiquery.core.javascript.JsQuery;
 import org.odlabs.wiquery.core.javascript.JsScope;
+import org.odlabs.wiquery.core.javascript.JsUtils;
+import org.odlabs.wiquery.ui.themes.ThemeUiHelper;
 
 /**
  *
@@ -39,7 +38,6 @@ public final class ResultPanel extends Panel {
     private static final long serialVersionUID =1L;
 
     WebMarkupContainer context;
-    WebMarkupContainer anchor;
     GridModel<Meibo> model;
 
     @Override
@@ -47,12 +45,6 @@ public final class ResultPanel extends Panel {
         //model.detach();
         super.onDetach();
         
-    }
-
-    public JsScope reloadGrid(){
-        
-        return JsScope.quickScope("jQuery(\"#"+ResultPanel.this.get("context:gridtable:grid").getMarkupId()+"\").setGridParam({page:1,sortname:'bunrui',sortorder: 'asc'}).trigger(\"reloadGrid\");");
-       
     }
     
     
@@ -94,15 +86,34 @@ public final class ResultPanel extends Panel {
         add(anchor);
         
     */
-        anchor = new AjaxFallbackLink("anchor"){
+        
+        
+        WebMarkupContainer anchor = new AjaxFallbackLink("anchor"){
 
             @Override
             public void onClick(AjaxRequestTarget target) {
                 model.setSortOrder(SortOrder.asc);
-                target.appendJavascript("jQuery(\"#"+ResultPanel.this.get("context:gridtable:grid").getMarkupId()+"\").setGridParam({page:1,sortname:'bunrui',sortorder: 'asc'}).trigger(\"reloadGrid\");");
+                //target.appendJavascript("$(\"#"+ResultPanel.this.get("context:gridtable:grid").getMarkupId()+"\").setGridParam({page:1,sortname:'bunrui',sortorder: 'asc'}).trigger(\"reloadGrid\");");
+                target.appendJavascript((String)new JsQuery(ResultPanel.this.get("context:gridtable:grid")).$().chain("setGridParam","{page:1,sortname:'bunrui',sortorder: 'asc'}").chain("trigger",JsUtils.quotes("reloadGrid")).render());
             }
          
         };
+        ThemeUiHelper.buttonRounded(anchor); 
+       /*
+        Label anchor=new Label("anchor","並び順を戻す");
+        anchor.setOutputMarkupId(true);
+        anchor.setOutputMarkupPlaceholderTag(true);
+        anchor.add(new WiQueryEventBehavior(new Event(MouseEvent.CLICK) {
+            private static final long serialVersionUID = 1L;
+            
+            @Override
+            public JsScope callback() {
+                return JsScope.quickScope(new JsQuery(ResultPanel.this.get("context:gridtable:grid")).$().chain("setGridParam","{page:1,sortname:'bunrui',sortorder: 'asc'}").chain("trigger",JsUtils.quotes("reloadGrid")).render());
+            }
+            
+        }));
+        * 
+        */
         add(anchor);
         
         //SelectQuery query=SearchSession.get().getQuery();
@@ -111,7 +122,7 @@ public final class ResultPanel extends Panel {
         
         
 
-        model=new GridModel(Meibo.class){
+        model=new GridModel(){
 
             @Override
             public IColumn getInitialSort() {
@@ -122,7 +133,6 @@ public final class ResultPanel extends Panel {
 
         //model.setObject("Meibo");
         model.setPagerpos(HorizontalPosition.left);
-
         model.setCaption((String)null);
         
         model.setSortOrder(SortOrder.asc);
@@ -153,12 +163,7 @@ public final class ResultPanel extends Panel {
         model.setRowNum(-1);
         model.setRowList(null);
         
-        //model.setScroll(2000);
-
-        model.setSortOrder(SortOrder.asc);
-        
-        
-        
+        //model.setScroll(2000);      
         
         context = new WebMarkupContainer("context");
         context.setOutputMarkupId(true);
@@ -173,8 +178,7 @@ public final class ResultPanel extends Panel {
 
             @Override
             protected void onSortCol(AjaxRequestTarget target, Grid<Meibo> grid, IColumn<Meibo> column, int col, String sortProperty, SortOrder order) {
-                    //System.out.println("onSortCol was clicked!");
-               
+                    //System.out.println("onSortCol was clicked!");             
             }
 
 
@@ -183,10 +187,7 @@ public final class ResultPanel extends Panel {
         
         grid.addEvent(new OnPagingAjaxEvent<Meibo>() {
 			@Override
-			protected void onPaging(
-					AjaxRequestTarget target,
-					Grid<Meibo> grid,
-					PageButton button) {
+			protected void onPaging(AjaxRequestTarget target,Grid<Meibo> grid,PageButton button) {
 				//System.out.println(button.name() + " was clicked!");
 			}
 
@@ -201,8 +202,6 @@ public final class ResultPanel extends Panel {
             
         });
         
-
-
         context.add(grid);
 
 

@@ -17,7 +17,7 @@
 			<url>http://databinder.net/repo/</url>
 		</repository>
                 	<repository>
-			<id>m2repo</id>
+			<id>wiquery-plugins</id>
 			<url>http://wiquery-plugins.googlecode.com/svn/m2repo/</url>
 		</repository>
                 	<repository>
@@ -314,6 +314,7 @@
 				<inherited>true</inherited>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+                                <version>2.3.2</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
@@ -349,4 +350,8 @@
 	 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
     <name>MeiboSystem</name>
+    <ciManagement>
+        <system>hudson</system>
+        <url>http://localhost:8080/job/meibo/</url>
+    </ciManagement>
 </project>

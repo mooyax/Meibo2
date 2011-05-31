@@ -23,3 +23,8 @@ li.feedbackPanelINFO {
 span.invalidField { color: red }
 
 
+div.ui-jqgrid {
+    position:relative;
+    font-size:0.6em;
+}
+

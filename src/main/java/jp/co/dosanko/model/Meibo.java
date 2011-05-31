@@ -31,7 +31,7 @@ public class Meibo extends _Meibo implements Serializable{
   private static List<String> posFields=null;
 
   private static Map<String, List<String>> distinctMap = Collections.synchronizedMap(new HashMap<String, List<String>>());
-
+ 
     public static Map<String, List<String>> getDistinctMap() {
         return distinctMap;
     }
