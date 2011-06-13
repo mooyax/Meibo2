@@ -61,7 +61,7 @@ public class HomePageTest {
                 
         }
         
-                @Test
+        @Test
         public void HomePage札幌検索テスト()
         {
                 
@@ -72,6 +72,8 @@ public class HomePageTest {
                 tester.assertVisible("infoPanel");
                 tester.assertVisible("resultPanel");
                 tester.assertVisible("searchPanel");
+                
+                
                 
                 
         }
