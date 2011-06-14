@@ -5,14 +5,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import jp.co.dosanko.WicketApplication;
-import jp.co.dosanko.pages.HomePage;
-import jp.co.dosanko.panels.ResultPanel;
-import jp.co.dosanko.panels.SearchInfoPanel;
+import jp.co.dosanko.model.SearchSession;
+
 import jp.co.dosanko.panels.SearchPanel;
 import org.apache.wicket.ajax.markup.html.form.AjaxFallbackButton;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.util.tester.FormTester;
-import org.junit.Ignore;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 /**
  * @author Richard Wilkinson - richard.wilkinson@jweekend.com
@@ -65,16 +65,17 @@ public class HomePageTest {
         public void HomePage札幌検索テスト()
         {
                 
-                FormTester formTester=tester.newFormTester("searchPanel:searchForm", true);
+                FormTester formTester = tester.newFormTester("searchPanel:searchForm", true);
                 formTester.setValue("itemlist:0:group", "check1"); 
                 tester.executeAjaxEvent("searchPanel:searchForm:fsearch", "onclick");
                       
                 tester.assertVisible("infoPanel");
                 tester.assertVisible("resultPanel");
                 tester.assertVisible("searchPanel");
-                
-                
-                
+
+                //札幌の検索結果 387
+                SearchSession session = (SearchSession) tester.getWicketSession();
+                assertThat(session.getDataProvider().size(),is(387));
                 
         }
 
