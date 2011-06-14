@@ -36,8 +36,6 @@ import org.apache.wicket.util.file.Folder;
 import org.apache.wicket.util.time.Duration;
 import org.odlabs.wiquery.ui.themes.IThemableApplication;
 
-
-
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
  *
@@ -49,7 +47,7 @@ import org.odlabs.wiquery.ui.themes.IThemableApplication;
 public final class WicketApplication extends DataApplication implements
         IRoleCheckingStrategy,
         IUnauthorizedComponentInstantiationListener,
-        IThemableApplication{
+        IThemableApplication {
 
     //private WiQueryInstantiationListener wiqueryPluginInstantiationListener;
     /** Subclass of authenticated web session to instantiate */
@@ -57,15 +55,16 @@ public final class WicketApplication extends DataApplication implements
     private Folder uploadFolder = null; //一時的
     private ResourceReference theme;
 
-    private class MyThemeResourceReference extends ResourceReference{
+    private class MyThemeResourceReference extends ResourceReference {
+
         private static final long serialVersionUID = 1L;
-                
-        public MyThemeResourceReference(){
-               super(WicketApplication.class, "theme/jquery-ui-1.8.13.custom.css");
-               //super(IThemableApplication.class, "uilightness/jquery-ui-1.8.10.custom.css");
+
+        public MyThemeResourceReference() {
+            super(WicketApplication.class, "theme/jquery-ui-1.8.13.custom.css");
+            //super(IThemableApplication.class, "uilightness/jquery-ui-1.8.10.custom.css");
         }
     }
-  
+
     /**
      * Constructor
      */
@@ -73,10 +72,10 @@ public final class WicketApplication extends DataApplication implements
         // Get web session class to instantiate
         webSessionClassRef = new WeakReference<Class<? extends AuthenticatedWebSession>>(
                 getWebSessionClass());
-        
-        theme=new MyThemeResourceReference();
-        
-     
+
+        theme = new MyThemeResourceReference();
+
+
     }
 
     public Folder getUploadFolder() //一時的
@@ -98,7 +97,7 @@ public final class WicketApplication extends DataApplication implements
         this.getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
         this.getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
         this.getRequestCycleSettings().setTimeout(Duration.minutes(10));
-        
+
         //System.out.println("Session duration="+this.getRequestCycleSettings().getTimeout().toString());
 
         getSecuritySettings().setAuthorizationStrategy(new RoleAuthorizationStrategy(this));
@@ -127,12 +126,13 @@ public final class WicketApplication extends DataApplication implements
     public Class<HomePage> getHomePage() {
         return HomePage.class;
     }
-/*
+    /*
     @Override
     public String getConfigurationType() {
-        return Application.DEPLOYMENT;
+    return Application.DEPLOYMENT;
     }
-*/
+     */
+
     @Override
     public Session newSession(Request request, Response response) {
         try {
@@ -187,7 +187,6 @@ public final class WicketApplication extends DataApplication implements
         return SearchSession.class;
     }
 
-    ;
 
     /**
      * @return Subclass of sign-in page
@@ -208,69 +207,68 @@ public final class WicketApplication extends DataApplication implements
         roleProvider.setQuery(rolesquery);
         return (UserRoles) roleProvider.iterator(0, 1).next();
     }
-    
-/*  
+
+    /*  
     @Override
     protected IRequestCycleProcessor newRequestCycleProcessor() {
-        return new WebRequestCycleProcessor() { 
-              @Override 
-            public void respond(RuntimeException e, RequestCycle requestCycle) 
-            { 
-                if (e instanceof PageExpiredException) { 
-                    if(((WebRequest)RequestCycle.get().getRequest()).isAjax()) { 
-                        AjaxRequestTarget rt = new AjaxRequestTarget(RequestCycle.get().getRequest().getPage()); 
-                        //rt.appendJavascript("if(typeof window.handleAjaxSessionTimeout=='function')window.handleAjaxSessionTimeout()"); 
-                        rt.appendJavascript("alert('セッションが切れました')");
-                        
-                        RequestCycle.get().setRequestTarget(rt); 
-                        return; 
-                    } 
-                } 
-                super.respond(e, requestCycle); 
-            } 
-        }; 
+    return new WebRequestCycleProcessor() { 
+    @Override 
+    public void respond(RuntimeException e, RequestCycle requestCycle) 
+    { 
+    if (e instanceof PageExpiredException) { 
+    if(((WebRequest)RequestCycle.get().getRequest()).isAjax()) { 
+    AjaxRequestTarget rt = new AjaxRequestTarget(RequestCycle.get().getRequest().getPage()); 
+    //rt.appendJavascript("if(typeof window.handleAjaxSessionTimeout=='function')window.handleAjaxSessionTimeout()"); 
+    rt.appendJavascript("alert('セッションが切れました')");
+    
+    RequestCycle.get().setRequestTarget(rt); 
+    return; 
+    } 
+    } 
+    super.respond(e, requestCycle); 
+    } 
+    }; 
     }
-
-  
+    
+    
     @Override
     public RequestCycle newRequestCycle(Request request, Response response) {
-        return new CustomRequestCycle(this, (WebRequest) request, response);
+    return new CustomRequestCycle(this, (WebRequest) request, response);
     }
-
+    
     public class CustomRequestCycle extends DataRequestCycle {
-
-        public CustomRequestCycle(final WebApplication application, final WebRequest request, final Response response) {
-
-            super(application, request, response);
-
-        }
-
-        @Override
-        public final Page onRuntimeException(final Page cause, final RuntimeException e) {
-
-            // obviously you can check the instance of the exception and return the appropriate page if desired
-
-            if (e instanceof PageExpiredException) {
-
-                if (this.getWebRequest().isAjax()) {
-
-                    return new MyExpiredErrorPage(new PageParameters());
-
-                }
-
-            }
-            
-            if(e instanceof WicketRuntimeException){
-                   return new MyExpiredErrorPage(new PageParameters());
-            }
-
-            return new HomePage(new PageParameters());
-
-        }
+    
+    public CustomRequestCycle(final WebApplication application, final WebRequest request, final Response response) {
+    
+    super(application, request, response);
+    
+    }
+    
+    @Override
+    public final Page onRuntimeException(final Page cause, final RuntimeException e) {
+    
+    // obviously you can check the instance of the exception and return the appropriate page if desired
+    
+    if (e instanceof PageExpiredException) {
+    
+    if (this.getWebRequest().isAjax()) {
+    
+    return new MyExpiredErrorPage(new PageParameters());
+    
+    }
+    
+    }
+    
+    if(e instanceof WicketRuntimeException){
+    return new MyExpiredErrorPage(new PageParameters());
+    }
+    
+    return new HomePage(new PageParameters());
+    
+    }
     }
      * *
      */
-
     @Override
     public ResourceReference getTheme(Session session) {
         return theme;
