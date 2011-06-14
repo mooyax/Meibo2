@@ -54,11 +54,15 @@ public final class WicketApplication extends DataApplication implements
     private final WeakReference<Class<? extends AuthenticatedWebSession>> webSessionClassRef;
     private Folder uploadFolder = null; //一時的
     private ResourceReference theme;
+    private final int durationTime = 10;
 
     private class MyThemeResourceReference extends ResourceReference {
 
         private static final long serialVersionUID = 1L;
 
+       /**
+       * Constructor
+       */
         public MyThemeResourceReference() {
             super(WicketApplication.class, "theme/jquery-ui-1.8.13.custom.css");
             //super(IThemableApplication.class, "uilightness/jquery-ui-1.8.10.custom.css");
@@ -96,7 +100,7 @@ public final class WicketApplication extends DataApplication implements
 
         this.getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
         this.getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
-        this.getRequestCycleSettings().setTimeout(Duration.minutes(10));
+        this.getRequestCycleSettings().setTimeout(Duration.minutes(durationTime));
 
         //System.out.println("Session duration="+this.getRequestCycleSettings().getTimeout().toString());
 
