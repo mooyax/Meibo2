@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="meibo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="266"/>
+	<property name="ireport.x" value="202"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Rows">
 		<conditionalStyle>
@@ -135,16 +135,16 @@
 	<detail>
 		<band height="71" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="45" width="79" height="26" backcolor="#A0A0A0"/>
+				<reportElement mode="Opaque" x="0" y="45" width="66" height="26" backcolor="#A0A0A0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+					<font size="8" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
 				</textElement>
 				<text><![CDATA[メールアドレス]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="320" y="45" width="79" height="26" backcolor="#A0A0A0"/>
+				<reportElement mode="Opaque" x="354" y="45" width="53" height="26" backcolor="#A0A0A0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
+					<font size="8" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
 				</textElement>
 				<text><![CDATA[ダイヤルイン]]></text>
 			</staticText>
@@ -155,13 +155,13 @@
 				<reportElement mode="Transparent" x="0" y="0" width="554" height="45"/>
 			</rectangle>
 			<line>
-				<reportElement x="398" y="45" width="1" height="26"/>
+				<reportElement x="406" y="45" width="1" height="26"/>
 			</line>
 			<line>
-				<reportElement x="320" y="45" width="1" height="26"/>
+				<reportElement x="354" y="45" width="1" height="26"/>
 			</line>
 			<line>
-				<reportElement x="79" y="46" width="1" height="25"/>
+				<reportElement x="65" y="46" width="1" height="25"/>
 			</line>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="7" y="26" width="547" height="18">
@@ -173,14 +173,14 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}+" ("+$F{hname}+")"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="405" y="45" width="149" height="25"/>
+				<reportElement x="410" y="45" width="144" height="25"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{tel1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="85" y="45" width="235" height="26"/>
+				<reportElement x="70" y="45" width="284" height="26"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-H"/>
 				</textElement>
