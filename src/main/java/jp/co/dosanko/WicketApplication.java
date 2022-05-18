@@ -56,7 +56,7 @@ public final class WicketApplication extends DataApplication implements
     private ResourceReference theme;
     private final int durationTime = 10;
 
-    private class MyThemeResourceReference extends ResourceReference {
+    static private class MyThemeResourceReference extends ResourceReference {
 
         private static final long serialVersionUID = 1L;
 

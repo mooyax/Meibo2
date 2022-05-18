@@ -292,8 +292,9 @@ public final class UpDownPanel extends Panel {
                 String campusName=SearchSession.get().getUserRoles().getDisplay();
                 try {
                     // Save to new file
-                    newFile.createNewFile();
-                    upload.writeTo(newFile);
+                    if(newFile.createNewFile()){
+                        
+                        upload.writeTo(newFile);
 
                     List<Meibo> meibos = reader.read(newFile, false);
                     int id=SearchSession.get().getUserRoles().getId();
@@ -309,12 +310,16 @@ public final class UpDownPanel extends Panel {
 
                     UpDownPanel.this.info("saved file: " + upload.getClientFileName());
                    
-                   
+                    
                     
                     SearchSession.get().setTempList(meibos);
                     PageParameters param = new PageParameters();
                     param.put("data", "set");
                     this.setResponsePage(AdminPage.class, param);
+                    }else{
+                        this.error("読み込みに失敗しました！！ ファイル生成に失敗");
+                        return;
+                    }
                    
                 } catch (Exception e) {
                     this.error("読み込みに失敗しました！！"+e);
